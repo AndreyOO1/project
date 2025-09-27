@@ -1,0 +1,125 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <iomanip>
+
+
+
+
+
+using namespace std;
+
+
+class Smartphone {
+public:
+
+	string brand;
+	string model;
+	string OS;
+	float verOS;
+	bool call;
+	bool pressedButton;
+	bool inputHeadphon;
+	Smartphone(string brand, string model, string OS, float verOS, bool call, bool pressedButton, bool inputHeadphon)
+	{
+		this->brand = brand;
+		this->model = model;
+		this->verOS = verOS;
+		this->OS = OS;
+		this->call = call;
+		this->pressedButton = pressedButton;
+		this->inputHeadphon = inputHeadphon;
+	}
+
+	void ring(Smartphone& smartphone) {
+		if (smartphone.call == true)
+		{
+			cout << "Смартфон: Бззззз" << endl;
+		}
+		else
+			cout << "Смартфон в состоянии спокойствия" << endl;
+	}
+
+	void work(Smartphone& smartphone) {
+		if (smartphone.pressedButton == true)
+		{
+			cout << "Экран смартфона загорелся" << endl;
+		}
+		else
+			cout << "Экран телефона выключен" << endl;
+	}
+
+	void onHeadphone(Smartphone& smartphone) {
+		if (smartphone.inputHeadphon == true)
+		{
+			cout << "Наушники подключены" << endl;
+		}
+		else
+			cout << "Наушники отключены" << endl;
+	}
+};
+int main()
+{
+	system("chcp 1251>null");
+	char a = 'a';
+	char d = 'a';
+	char w = 'a';
+	char b;
+	bool c = false;
+	bool f = false;
+	bool h = false;
+
+	while (a != '0')
+	{
+		cout << "Нажать кнопку блокировки экрана? Y/N" << endl;
+		cin >> b;
+		if (b == 'Y' || b == 'y')
+		{
+			c = true;
+		}
+		if (b == 'N' || b == 'n')
+		{
+			c = false;
+		}
+
+		cout << "Попросить друга позвонить на ваш телефон? Y/N" << endl;
+		cin >> d;
+		if (d == 'Y' || d == 'y')
+		{
+			f = true;
+		}
+		if (d == 'N' || d == 'n')
+		{
+			f = false;
+		}
+
+		cout << "Подключить наушники к телефону? Y/N" << endl;
+		cin >> w;
+		if (w == 'Y' || w == 'y')
+		{
+			h = true;
+		}
+		if (w == 'N' || w == 'n')
+		{
+			h = false;
+		}
+		system("cls");
+
+		cout << "Системные сведения и состояние телефона: " << endl << endl;
+		Smartphone smartphone("Honor", "8X", "Android", 16.1, f, c, h);
+		cout << setw(10) << "Бренд: " << setw(12) << smartphone.brand << endl;
+		cout << setw(10) << "Модель: " << setw(12) << smartphone.model << endl;
+		cout << setw(10) << "Тип ОС: " << setw(12) << smartphone.OS << endl;
+		cout << setw(9) << "Версия:" << setw(13) << smartphone.verOS << endl << endl;
+
+		smartphone.ring(smartphone);
+		smartphone.work(smartphone);
+		smartphone.onHeadphone(smartphone);
+		cout << endl << "Для продолжения нажмите любую кнопку" << endl << "Для выхода нажмите '0'" << endl;
+		cin >> a;
+		system("cls");
+	}
+
+
+	return 0;
+}
